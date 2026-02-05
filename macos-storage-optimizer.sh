@@ -111,7 +111,7 @@ clean_path() {
 # Print banner
 echo -e "${GREEN}╔════════════════════════════════════════╗${NC}"
 echo -e "${GREEN}║   macOS Storage Optimizer             ║${NC}"
-echo -e "${GREEN}╔════════════════════════════════════════╗${NC}"
+echo -e "${GREEN}╚════════════════════════════════════════╝${NC}"
 
 if [ "$DRY_RUN" = true ]; then
     echo -e "${YELLOW}Running in DRY-RUN mode - no files will be deleted${NC}"
@@ -188,15 +188,16 @@ clean_path "$PIP_CACHE" "pip cache"
 
 # Python __pycache__ directories (common in development)
 print_header "Cleaning Python __pycache__ directories..."
+PYCACHE_COUNT=$(find "$HOME" -type d -name "__pycache__" 2>/dev/null | wc -l | tr -d ' ')
 if [ "$DRY_RUN" = false ]; then
-    PYCACHE_COUNT=$(find "$HOME" -type d -name "__pycache__" 2>/dev/null | wc -l)
     if [ "$PYCACHE_COUNT" -gt 0 ]; then
         find "$HOME" -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
         print_success "Removed $PYCACHE_COUNT __pycache__ directories"
     fi
 else
-    PYCACHE_COUNT=$(find "$HOME" -type d -name "__pycache__" 2>/dev/null | wc -l)
-    print_warning "Would remove $PYCACHE_COUNT __pycache__ directories"
+    if [ "$PYCACHE_COUNT" -gt 0 ]; then
+        print_warning "Would remove $PYCACHE_COUNT __pycache__ directories"
+    fi
 fi
 
 # Xcode DerivedData

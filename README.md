@@ -96,7 +96,7 @@ Once you're satisfied with the dry-run output:
 ```
 ╔════════════════════════════════════════╗
 ║   macOS Storage Optimizer             ║
-╔════════════════════════════════════════╗
+╚════════════════════════════════════════╝
 
 ==> Cleaning Homebrew caches...
 ✓ Cleaned: Homebrew cache (245.67 MB)

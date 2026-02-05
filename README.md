@@ -14,14 +14,15 @@ chmod +x clean_mac.sh
 
 ## Cleanup Targets
 
-The script automates the removal of data from the following sources:
+The script automates the reclamation of storage across the following categories:
 
-* **Virtualization**: OrbStack/Docker build caches and unused resources.
-* **Development**: Xcode DerivedData and iOS Simulator runtime images.
-* **Package Managers**: Homebrew logs/caches, NPM global cache, and Conda unused packages.
-* **Applications**: Claude Desktop VM bundles and general system caches.
-* **System**: High-definition wallpaper assets (idleassetsd) and system trash.
-
+| Category | Components | Description |
+| --- | --- | --- |
+| **Virtualization** | OrbStack, Docker | Build caches, unused images, and detached volumes. |
+| **Development** | Xcode, CoreSimulator | DerivedData and legacy iOS/watchOS simulator runtime images. |
+| **Package Managers** | Homebrew, NPM, Conda | Service logs, old formulas, and global package caches. |
+| **Applications** | Claude Desktop, Caches | Localized VM bundles and general application cache directories. |
+| **System Assets** | Aerial Wallpapers, Trash | High-definition screen saver videos and system trash. |
 ## Note on Sparse Files
 
 For tools like OrbStack or Parallels, this script removes data within the virtual environment. To reduce the actual size of the `.dmg` or `.pvm` files on the physical disk, you must manually initiate the **Optimize Storage** or **Reclaim Space** feature in the respective application's GUI.

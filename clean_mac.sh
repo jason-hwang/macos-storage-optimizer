@@ -13,7 +13,7 @@ echo "--------------------------------------------------"
 # 1. System Caches and macOS Aerial Wallpapers
 echo "[1/7] Cleaning System Caches and Aerial Wallpaper assets..."
 # Cleans general app caches
-sudo rm -rf ~/Library/Caches/*
+sudo rm -rf ~/Library/Caches/* 2>/dev/null
 # Cleans the 18GB+ high-definition wallpaper videos found earlier
 sudo rm -rf ~/Library/Application\ Support/com.apple.idleassetsd/Customer/*
 echo "Done."
